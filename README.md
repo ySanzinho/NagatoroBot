@@ -1,7 +1,7 @@
 # NagatoroBot
 ![Nagatoro Avatar](/images/avatar.jpg)
 
-### Welcome to my journey learning javascript with Discord.js.
+<h3> Welcome to my journey learning javascript with Discord.js.</h3>
 
 I hope to learn from this project:
 1. Programming Logic.
