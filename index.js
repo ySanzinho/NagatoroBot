@@ -3,6 +3,7 @@ const { Client, Collection } = require('discord.js');
 const { prefix, token } = require('./config.json'); // defining the prefix and token
 const fs = require('fs'); // this package is for reading files and getting their inputs
 const client = new Client();
+const levels = require('./levels')
 
 client.commands = new Collection(); //an collection (like a digital map(database)) for all your commands
 client.aliases = new Collection() //an collection for all your command-aliases
