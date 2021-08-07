@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
-//const { mongoPath } = require('./config.json')
+require('dotenv/config');
+const db_password = process.env.DB_PASSWORD; 
 
-const mongoPath = 'mongodb+srv://Fujimoto:S1EMCo1IfhRSfdZH@nagatorobot.c7y4d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const mongoPath = `mongodb+srv://${db_password}/Nagatoro?retryWrites=true&w=majority`
 
 module.exports = async () => {
     await mongoose.connect(mongoPath, {

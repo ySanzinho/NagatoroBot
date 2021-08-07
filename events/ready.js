@@ -1,6 +1,8 @@
 const { Mongoose } = require("mongoose");
-const levels = require("../levels");
-const mongo = require("../mongo");
+const mongo = require("../database/mongo");
+const Levels = require('discord-xp');
+require('dotenv')
+const db_password = process.env.DB_PASSWORD;
 
 //here the event starts
 module.exports = async client => {
@@ -10,12 +12,10 @@ module.exports = async client => {
     //Database Mongoose
     await mongo().then(Mongoose => {
         try {
-            console.log('Conectado a Database"!')
+            console.log("Conectada a Database!")
         } finally {
             Mongoose.connection.close()
+            Levels.setURL(`mongodb+srv://${db_password}/Nagatoro?retryWrites=true&w=majority`)
         }
     })
-
-    levels(client)
-    //
 }
