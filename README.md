@@ -13,7 +13,7 @@ My goals for the Bot are:
 - [x] Make the bot code base.
 - [x] Put handlers to organize commands.
 - [x] Add a database to the bot.
-- [] Add XP system.
+- [x] Add XP system.
 - [] Add reputation system.
 - [] Add profile system.
 - [] Add administration commands.
