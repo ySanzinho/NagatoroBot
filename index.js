@@ -1,10 +1,10 @@
 //Modules
 const { Client, Collection } = require('discord.js');
-const { prefix } = require('./config.json'); // defining the prefix and token
+//const { prefix } = require('./config.json'); // defining the prefix and token
 
 //Schemas
-const Guild = require('./schemas/guild');
-const User = require('./schemas/user');
+const GuildSchemas = require('./schemas/guildSchemas');
+const UserSchemas = require('./schemas/userSchemas');;
 
 //.ENV
 require('dotenv/config');
@@ -32,6 +32,22 @@ eventhandler(client); //this is for event handling
 client.on('message', async message => {
       if (message.author.bot) return;// if the message  author is a bot, return aka ignore the inputs
       if (!message.guild) return; //if the message is not in a guild (aka in dms), return aka ignore the inputs
+
+      // Configuração do prefix do bot
+      let prefix;
+      let data = await GuildSchemas.findOne({
+        _id: message.guild.id
+      })
+      if (data === null) {
+        let newData = await GuildSchemas.create({
+          _id: message.guild.id,
+          prefix: 'n!',
+          guildOwnerID: message.guild.owner.id
+        })
+        newData.save()
+      } else {
+        prefix = data.prefix
+      }
 
       //Levels
       const randomXp = Math.floor(Math.random() * 23) + 1;

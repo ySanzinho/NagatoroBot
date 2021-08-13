@@ -1,4 +1,7 @@
 const Levels = require('discord-xp')
+const canvacord = require('canvacord');
+const Discord = require('discord.js');
+
 module.exports = {
     //definition
     name: "level", //the name of the command 
@@ -13,8 +16,22 @@ module.exports = {
 
         const userTarget = await Levels.fetch(message.author.id, message.guild.id); // Selects the target from the database
 
+        const neededXp = Levels.xpFor(parseInt(userTarget.level) + 1);
+
         if (!userTarget) return message.channel.send('Parece que esse usuário não ganhou XP o suficiente '); //
 
-        message.channel.send(`> **${target.tag}** está no nível ${userTarget.level}.`); //We show the level
+        const rank = new canvacord.Rank()
+            .setAvatar(message.author.displayAvatarURL({ dynamic: false, format: 'png' }))
+            .setCurrentXP(userTarget.xp)
+            .setRequiredXP(neededXp)
+            .setStatus(message.author.presence.status)
+            .setProgressBar('#FFA500', "COLOR")
+            .setUsername(message.author.username)
+            .setDiscriminator(message.author.discriminator)
+        rank.build()
+            .then(data => {
+                const attatchment = new Discord.MessageAttachment(data, `${message.author.username}Rank.png`)
+                message.channel.send(attatchment);
+            })
     }
 }
