@@ -4,7 +4,7 @@ const { Client, Collection } = require('discord.js');
 
 //Schemas
 const GuildSchemas = require('./schemas/guildSchemas');
-const UserSchemas = require('./schemas/userSchemas');;
+const UserSchemas = require('./schemas/userSchemas');
 
 //.ENV
 require('dotenv/config');
