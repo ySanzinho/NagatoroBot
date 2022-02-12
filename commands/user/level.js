@@ -8,7 +8,7 @@ module.exports = {
     category: "user", //the category this will be listed at, for the help cmd
     aliases: ["level", "nivel"], //every parameter can be an alias 
     usage: "level @user", //this is for the help command for EACH cmd
-    description: "Ver o nível do usuário", //the description of the command
+    description: "Ver o rank do usuário.", //the description of the command
 
     //running the command with the parameters: client, message, args, user, text, prefix
     run: async (client, message, args, user, text, prefix) => {
