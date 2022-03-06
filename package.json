@@ -12,11 +12,11 @@
     "discord.js": "^12.5.1",
     "discord.js-commando": "^0.12.3",
     "dotenv": "^10.0.0",
+    "express": "^4.17.3",
     "got": "^11.8.2",
     "mongoose": "^5.13.5",
     "superagent": "^6.1.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"

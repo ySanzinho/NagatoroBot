@@ -2,7 +2,7 @@ const canvacord = require('canvacord');
 const { Mongoose } = require('mongoose');
 const mongo = require('../database/mongo');
 const Discord = require('discord.js');
-const WelcomeSchema = require('../schemas/welcomeSchemas');
+const WelcomeSchema = require('../database/schemas/welcomeSchemas');
 
 module.exports = async (client, member, guild) => {
     WelcomeSchema.findOne({ guildID: member.guild.id}, async (err, data) => {

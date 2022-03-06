@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const UserSchema = require('../../schemas/userSchemas');
+const UserSchema = require('../../database/schemas/userSchemas');
 
 module.exports = {
     name: "rep",

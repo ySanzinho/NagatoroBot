@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const PrefixSchema = require('../../schemas/guildSchemas');
+const PrefixSchema = require('../../database/schemas/guildSchemas');
 
 module.exports =  {
     name: "prefix",

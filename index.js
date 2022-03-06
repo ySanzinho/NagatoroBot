@@ -3,12 +3,12 @@ const { Client, Collection } = require('discord.js');
 //const { prefix } = require('./config.json'); // defining the prefix and token
 
 //Schemas
-const GuildSchemas = require('./schemas/guildSchemas');
-const UserSchemas = require('./schemas/userSchemas');
+const GuildSchemas = require('./database/schemas/guildSchemas');
+const UserSchemas = require('./database/schemas/userSchemas');
 
 //.ENV
 require('dotenv/config');
-const token = process.env.TOKEN;
+const token = process.env.DISCORD_TOKEN;
 
 //Level Discord XP config
 const Levels = require('discord-xp');

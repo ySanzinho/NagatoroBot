@@ -1,6 +1,6 @@
 const { Mongoose } = require('mongoose');
 const mongo = require('../database/mongo');
-const guildSchema = require('../schemas/guildSchemas');
+const guildSchema = require('../database/schemas/guildSchemas');
 
 module.exports = (client, guild) => {
     guildSchema.findOne({ _id: guild.id}, async (err, data) => {

@@ -1,4 +1,4 @@
-const welcomeSchema = require('../../schemas/welcomeSchemas');
+const welcomeSchema = require('../../database/schemas/welcomeSchemas');
 const Discord = require('discord.js');
 
 module.exports = {
