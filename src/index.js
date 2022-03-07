@@ -1,13 +1,32 @@
+require('dotenv').config();
+require('./strategies/discord');
+
+const express = require( 'express' );
+const session = require( 'express-session' );
+const passport = require( 'passport' );
+
+const app = express();
+const PORT = process.env.PORT || 3002
+const routes = require( './routes' );
+
+
+app.use(session({secret: 'SECRET'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use( '/api', routes);
+
+app.listen( PORT, () => console.log(`Rodando na Porta ${ PORT }` ) );
+
 //Modules
 const { Client, Collection } = require('discord.js');
 //const { prefix } = require('./config.json'); // defining the prefix and token
 
 //Schemas
-const GuildSchemas = require('./database/schemas/guildSchemas');
-const UserSchemas = require('./database/schemas/userSchemas');
+const GuildSchemas = require('../database/schemas/guildSchemas');
+const UserSchemas = require('../database/schemas/userSchemas');
 
 //.ENV
-require('dotenv/config');
 const token = process.env.DISCORD_TOKEN;
 
 //Level Discord XP config
@@ -23,9 +42,9 @@ const cooldowns = new Collection(); //an collection for cooldown commands of eac
 client.categories = fs.readdirSync("./commands/"); //categories
 
 ["command"].forEach(handler => {
-	require(`./handlers/command`)(client);
+	require(`../handlers/command`)(client);
 }); //this is for command loading in the handler file, one fireing for each cmd
-const eventhandler = require("./handlers/events");
+const eventhandler = require("../handlers/events");
 eventhandler(client); //this is for event handling 
 
 //fires each time the bot receives a message
