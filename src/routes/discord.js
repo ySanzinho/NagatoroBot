@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
-router.get('/', (req, res) => {
-    res.sendStatus( {
+router.get("/", (req, res) => {
+    res.send({
         msg: 'Discord'
     });
 })

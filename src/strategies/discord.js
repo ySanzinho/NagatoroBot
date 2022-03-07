@@ -19,18 +19,22 @@ passport.deserializeUser(async (discordId, done) => {
 passport.use(
     new DiscordStrategy({
     clientID: process.env.DASHBOARD_CLIENT_ID, 
-    clientSecret: process.env.DASHBOARD_CLIENT_SECRET,
+    clientSecret: process.env.DASBOARD_CLIENT_SECRET,
     callbackURL: process.env.DASHBOARD_CALLBACK_URL,
     scope: ['identify', 'guilds'],
 }, async (accessToken, refreshToken, profile, done) => {
     const { id, username, discriminator, avatar, guilds } = profile;
     console.log(id, username, discriminator, avatar, guilds)
     try {
-        const findUser = await User.findOneAndUpdate({ discordId: id }, {
+        const findUser = await User.findOneAndUpdate(
+            { discordId: id }, 
+            {
             discordTag: `${username}#${discriminator}`,
             avatar,
             guilds,
-        }, { new: true });
+        }, 
+        { new: true }
+        );
         if ( findUser ) {
             console.log('Usuário encontrado');
             return done( null, findUser );

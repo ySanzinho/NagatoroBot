@@ -2,17 +2,28 @@ require('dotenv').config();
 require('./strategies/discord');
 
 const express = require( 'express' );
-const session = require( 'express-session' );
 const passport = require( 'passport' );
+const mongoose = require( 'mongoose' );
+const session = require( 'express-session' );
+const Store = require('connect-mongo');
+const db_password = process.env.DB_PASSWORD;
 
 const app = express();
 const PORT = process.env.PORT || 3002
 const routes = require( './routes' );
 
 
-app.use(session({secret: 'SECRET'}));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(session({
+  secret: 'secret',
+  cookie: {
+    maxAge: 60000 * 60 *24
+  },
+  resave: false,
+  saveUninitialized: false,
+  store: Store.create({ mongoUrl: `mongodb+srv://${db_password}/Nagatoro?retryWrites=true&w=majority`})
+}));
+app.use(passport.initialize() );
+app.use(passport.session() );
 
 app.use( '/api', routes);
 
@@ -45,6 +56,7 @@ client.categories = fs.readdirSync("./commands/"); //categories
 	require(`../handlers/command`)(client);
 }); //this is for command loading in the handler file, one fireing for each cmd
 const eventhandler = require("../handlers/events");
+const MongoStore = require('connect-mongo');
 eventhandler(client); //this is for event handling 
 
 //fires each time the bot receives a message
