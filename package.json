@@ -4,10 +4,14 @@
   "description": "",
   "main": "./src/app.js",
   "dependencies": {
+    "@chakra-ui/react": "^1.8.6",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
     "ascii-table": "0.0.9",
     "canvacord": "^5.2.3",
     "common-tags": "^1.8.0",
     "connect-mongo": "^4.6.0",
+    "cors": "^2.8.5",
     "discord-canvas": "^1.4.1",
     "discord-xp": "^1.1.16",
     "discord.js": "^12.5.1",
@@ -15,12 +19,14 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
+    "framer-motion": "^6.2.8",
     "got": "^11.8.2",
     "mongoose": "^5.13.14",
     "nodemon": "^2.0.15",
     "passport": "^0.5.2",
     "passport-discord": "^0.1.4",
-    "superagent": "^6.1.0"
+    "superagent": "^6.1.0",
+    "yarn": "^1.22.17"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

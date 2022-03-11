@@ -1,3 +1,5 @@
 /node_modules
 package-lock.json
 .env
+/dashboard-client/node_modules
+/dashboard-client/package-lock.json

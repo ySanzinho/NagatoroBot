@@ -5,6 +5,7 @@ const express = require( 'express' );
 const passport = require( 'passport' );
 const mongoose = require( 'mongoose' );
 const session = require( 'express-session' );
+const cors = require('cors');
 const Store = require('connect-mongo');
 const db_password = process.env.DB_PASSWORD;
 
@@ -12,6 +13,10 @@ const app = express();
 const PORT = process.env.PORT || 3002
 const routes = require( './routes' );
 
+app.use( cors( {
+  origin: [ 'http://localhost:3000'],
+  credentials: true,
+}))
 
 app.use(session({
   secret: 'secret',
@@ -22,6 +27,7 @@ app.use(session({
   saveUninitialized: false,
   store: Store.create({ mongoUrl: `mongodb+srv://${db_password}/Nagatoro?retryWrites=true&w=majority`})
 }));
+
 app.use(passport.initialize() );
 app.use(passport.session() );
 
