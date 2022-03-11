@@ -13,11 +13,6 @@ const app = express();
 const PORT = process.env.PORT || 3002
 const routes = require( './routes' );
 
-app.use( cors( {
-  origin: [ 'http://localhost:3000'],
-  credentials: true,
-}))
-
 app.use(session({
   secret: 'secret',
   cookie: {
@@ -27,6 +22,11 @@ app.use(session({
   saveUninitialized: false,
   store: Store.create({ mongoUrl: `mongodb+srv://${db_password}/Nagatoro?retryWrites=true&w=majority`})
 }));
+
+app.use( cors( {
+  origin: [ 'http://localhost:3000'],
+  credentials: true,
+}))
 
 app.use(passport.initialize() );
 app.use(passport.session() );
