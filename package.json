@@ -1,7 +1,7 @@
 {
   "name": "nagatoro-bot",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.5.0",
+  "description": "Bot discord with Dashboard",
   "main": "./src/app.js",
   "dependencies": {
     "@chakra-ui/react": "^1.8.6",
@@ -12,6 +12,7 @@
     "common-tags": "^1.8.0",
     "connect-mongo": "^4.6.0",
     "cors": "^2.8.5",
+    "cross-fetch": "^3.1.5",
     "discord-canvas": "^1.4.1",
     "discord-xp": "^1.1.16",
     "discord.js": "^12.5.1",
@@ -22,6 +23,7 @@
     "framer-motion": "^6.2.8",
     "got": "^11.8.2",
     "mongoose": "^5.13.14",
+    "node-fetch": "^3.2.3",
     "nodemon": "^2.0.15",
     "passport": "^0.5.2",
     "passport-discord": "^0.1.4",
@@ -30,8 +32,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js"
+    "start": "node ./src/app.js",
+    "type": "module"
   },
-  "author": "Tomato#6966",
+  "author": "Sanzinho",
   "license": "ISC"
 }
